@@ -16,6 +16,7 @@ end
 def get_japanese_emoticon(yaml_file, english_emo_file)
   new_hash = load_library(yaml_file) 
   new_hash.map do |name, languages|
+    binding.pry
     return languages[:japanese] if languages[:english] == english_emo_file 
   end
     "Sorry, that emoticon was not found"
@@ -24,8 +25,8 @@ end
 
 def get_english_meaning(yaml_file, jap_emo_file)
   new_hash = load_library(yaml_file)
-  new_hash.map do |name, languages|
-    return name if languages[:japanese] == jap_emo_file 
+  new_hash.map do |name, emoticons|
+    return name if emoticons[:japanese] == jap_emo_file 
   end 
   "Sorry, that emoticon was not found"
   # code goes here
